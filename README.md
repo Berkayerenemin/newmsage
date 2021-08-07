@@ -2,6 +2,10 @@
 MSAGE powered by Python3\
 MSAGE developed by Berkay Eren EMİN
 
+![forks](https://img.shields.io/github/forks/Berkayerenemin/newmsage)
+![stars](https://img.shields.io/github/stars/Berkayerenemin/newmsage)
+![msage](https://img.shields.io/github/issues/Berkayerenemin/newmsage)
+
 ### MSAGE nedir?
 Açık kaynak kodlu, kullanıcıların kendi sunucularına veya MSAGE'in sunucularına bağlanarak yeni odalar kurup arkadaşlarıyla mesajlaştıkları bir uygulamadır. GNU Lisansı ile lisanslanmıştır.
 
