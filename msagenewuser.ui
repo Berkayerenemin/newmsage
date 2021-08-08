@@ -32,7 +32,7 @@ background:transparent;
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>30</y>
+     <y>20</y>
      <width>391</width>
      <height>561</height>
     </rect>
@@ -65,111 +65,6 @@ border-radius:10px;
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>20</y>
-       <width>51</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Raleway</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Adınız</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>70</y>
-       <width>61</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Raleway</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Soyadınız</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_4">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>120</y>
-       <width>81</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Raleway</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Kullanıcı Adı</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>170</y>
-       <width>47</width>
-       <height>13</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Raleway</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Şifre</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>220</y>
-       <width>47</width>
-       <height>13</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Raleway</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>2x2 =</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
@@ -192,10 +87,11 @@ border-radius:10px;
 {
 background: #9b84d1;
 border-radius:15px;
+padding: 25px 25px;
 }</string>
      </property>
      <property name="text">
-      <string>     +</string>
+      <string>+</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
@@ -204,16 +100,16 @@ border-radius:15px;
        <x>20</x>
        <y>390</y>
        <width>141</width>
-       <height>21</height>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Raleway</family>
+       <family>Bahnschrift</family>
        <pointsize>10</pointsize>
-       <weight>75</weight>
+       <weight>50</weight>
        <italic>false</italic>
-       <bold>true</bold>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -231,104 +127,155 @@ color:#ffffff;
     <widget class="QLineEdit" name="lineEdit">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>20</x>
        <y>20</y>
-       <width>181</width>
-       <height>20</height>
+       <width>281</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit
 {
 background: #B99DE4;
 border-radius:7px;
+padding: 10px 10px;
 }</string>
+     </property>
+     <property name="placeholderText">
+      <string>Adınız</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_2">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>20</x>
        <y>70</y>
-       <width>181</width>
-       <height>20</height>
+       <width>281</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit
 {
 background: #B99DE4;
 border-radius:7px;
+padding: 10px 10px;
 }</string>
+     </property>
+     <property name="placeholderText">
+      <string>Soyadınız</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_3">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>20</x>
        <y>120</y>
-       <width>181</width>
-       <height>20</height>
+       <width>281</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit
 {
 background: #B99DE4;
 border-radius:7px;
+padding: 10px 10px;
 }</string>
+     </property>
+     <property name="placeholderText">
+      <string>Kullanıcı Adı</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_7">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>20</x>
        <y>170</y>
-       <width>181</width>
-       <height>20</height>
+       <width>281</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit
 {
 background: #B99DE4;
 border-radius:7px;
+padding: 10px 10px;
 }</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Şifre</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_8">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>20</x>
        <y>220</y>
-       <width>181</width>
-       <height>20</height>
+       <width>281</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::PreventContextMenu</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit
 {
 background: #B99DE4;
 border-radius:7px;
+padding: 10px 10px;
 }</string>
+     </property>
+     <property name="placeholderText">
+      <string>2x2 =</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_3">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>290</y>
-       <width>111</width>
-       <height>21</height>
+       <x>170</x>
+       <y>320</y>
+       <width>121</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Raleway</family>
+       <family>Bahnschrift</family>
        <pointsize>10</pointsize>
-       <weight>75</weight>
+       <weight>50</weight>
        <italic>false</italic>
-       <bold>true</bold>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -346,19 +293,19 @@ color:#ffffff;
     <widget class="QPushButton" name="pushButton_4">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>320</y>
-       <width>111</width>
-       <height>21</height>
+       <x>170</x>
+       <y>280</y>
+       <width>121</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Raleway</family>
+       <family>Bahnschrift</family>
        <pointsize>10</pointsize>
-       <weight>75</weight>
+       <weight>50</weight>
        <italic>false</italic>
-       <bold>true</bold>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -376,15 +323,15 @@ color:#ffffff;
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>390</y>
-       <width>111</width>
-       <height>21</height>
+       <x>170</x>
+       <y>360</y>
+       <width>121</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Raleway</family>
+       <family>Bahnschrift</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <italic>false</italic>
@@ -431,7 +378,7 @@ color:#ffffff;
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>280</x>
       <y>540</y>
       <width>111</width>
       <height>16</height>
@@ -439,10 +386,10 @@ color:#ffffff;
     </property>
     <property name="font">
      <font>
-      <family>Raleway</family>
-      <pointsize>8</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Bahnschrift</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -452,22 +399,22 @@ color:#ffffff;
    <widget class="QLabel" name="label_15">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>55</y>
+      <x>290</x>
+      <y>60</y>
       <width>61</width>
       <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Raleway Black</family>
+      <family>Bahnschrift</family>
       <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>ÜYELİK</string>
+     <string>ÜYE OL</string>
     </property>
    </widget>
   </widget>

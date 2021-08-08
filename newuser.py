@@ -34,6 +34,7 @@ class Ui(QtWidgets.QMainWindow):
         self.kullanici = []
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setFocus()
         self.show()
 
     def avatarresimdef(self):
