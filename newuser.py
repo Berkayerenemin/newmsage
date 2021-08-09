@@ -13,7 +13,7 @@ import pickle
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
-        uic.loadUi('msagenewuserpage.ui', self)
+        uic.loadUi('widgets/msagenewuserpage.ui', self)
         self.ad = self.findChild(QtWidgets.QLineEdit, "lineEdit")
         self.soyad = self.findChild(QtWidgets.QLineEdit, "lineEdit_2")
         self.kullaniciadi = self.findChild(QtWidgets.QLineEdit, "lineEdit_3")
@@ -84,7 +84,7 @@ class Ui(QtWidgets.QMainWindow):
             log = open(dosya, "rb")
             data = log.read()
             c.sendall(data)
-            otologin = open("oto.txt", "w")
+            otologin = open("data/oto.txt", "w")
             for element in self.kullanici:
                 otologin.write(element)
                 otologin.write(',')

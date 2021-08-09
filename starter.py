@@ -11,7 +11,7 @@ import pickle
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
-        uic.loadUi('starter.ui', self)
+        uic.loadUi('widgets/starter.ui', self)
         self.giflabel = self.findChild(QtWidgets.QLabel, "label")
         self.progressbar = self.findChild(QtWidgets.QProgressBar, "progressBar")
         self.start = 0
@@ -30,7 +30,7 @@ class Ui(QtWidgets.QMainWindow):
 
     
     def movie(self):
-        self.movie = QtGui.QMovie("shodaw.gif")
+        self.movie = QtGui.QMovie("assets/shodaw.gif")
         size = QtCore.QSize(200, 161)
         self.movie.setScaledSize(size)
         self.giflabel.setMovie(self.movie)
@@ -67,7 +67,7 @@ class Ui(QtWidgets.QMainWindow):
             print("Versiyon güncel.")
             c2.send("update".encode("utf8"))
             try:
-                otologin = open("oto.txt", "r")
+                otologin = open("data/oto.txt", "r")
                 print("Otomatik login için giriş bilgilerini kaydettiği dosyayı aramakta.")
             except FileNotFoundError:
                 print("Öyle bir dosya yok.")
@@ -97,6 +97,10 @@ class Ui(QtWidgets.QMainWindow):
             os.system('python msageana.py')
 
 
-app = QtWidgets.QApplication(sys.argv)
-window = Ui()
-app.exec_()
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    window = Ui()
+    app.exec_()
+
+if __name__ == "__main__":
+    main()
