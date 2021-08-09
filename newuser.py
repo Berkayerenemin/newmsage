@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMessageBox, QStackedWidget, QStackedLayout
 import sys
 import os
 import time
@@ -13,10 +13,14 @@ import pickle
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
-        uic.loadUi('msagenewuser.ui', self)
+        uic.loadUi('msagenewuserpage.ui', self)
         self.ad = self.findChild(QtWidgets.QLineEdit, "lineEdit")
         self.soyad = self.findChild(QtWidgets.QLineEdit, "lineEdit_2")
         self.kullaniciadi = self.findChild(QtWidgets.QLineEdit, "lineEdit_3")
+        self.stackwidget = self.findChild(QtWidgets.QStackedWidget, "stackedWidget")
+        self.page1 = self.findChild(QtWidgets.QWidget, "page")
+        self.page2 = self.findChild(QtWidgets.QWidget, "page_2")
+        self.page3 = self.findChild(QtWidgets.QWidget, "page_3")
         self.sifre = self.findChild(QtWidgets.QLineEdit, "lineEdit_7")
         self.dogrulama = self.findChild(QtWidgets.QLineEdit, "lineEdit_8")
         self.avatarresim = self.findChild(QtWidgets.QPushButton, "pushButton")
@@ -27,10 +31,15 @@ class Ui(QtWidgets.QMainWindow):
         self.msgBox = QMessageBox()
         self.msgBox2 = QMessageBox()
         self.msgBox3 = QMessageBox()
-        self.hakkimizda.clicked.connect(self.hakkimizdaShow)
-        self.neden.clicked.connect(self.nedenShow)
+        self.uyedon1 = self.findChild(QtWidgets.QPushButton, "pushButton_6")
+        self.uyedon2 = self.findChild(QtWidgets.QPushButton, "pushButton_7")
+        self.hakkimizda.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page2))
+        self.neden.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page3))
+        self.uyedon1.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page1))
+        self.uyedon2.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page1))
         self.avatarresim.clicked.connect(self.avatarresimdef)
         self.startbutton.clicked.connect(self.start)
+
         self.kullanici = []
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
@@ -41,31 +50,22 @@ class Ui(QtWidgets.QMainWindow):
         self.profilresmilabel.setText("")
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        self.fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;jpg Files (*.jpg)", options=options)
-        if self.fileName:
-            print(self.fileName)
-            dosya = self.fileName
-            pixmap = QPixmap(dosya)
-            pixmap4 = pixmap.scaled(101, 101, QtCore.Qt.KeepAspectRatio)
-            self.profilresmilabel.setPixmap(pixmap4)
-        else:
-            self.control = "x"
-
-    def hakkimizdaShow(self):
-        self.msgBox.setIcon(QMessageBox.Information)
-        self.msgBox.setText("MSAGE, açık kaynak kodlu, kişilerin kendi sunucularını kurarak veya MSAGE'in kurulmuş sunucularında odalar kurarak mesajlaştığı bir mesajlaşma programdır.\n\nTüm kullanıcı verileri MSAGE'in kendi bünyesinde saklıdır. Daha fazlası için msage.com adresine bakabilirsiniz.")
-        self.msgBox.setWindowTitle("MSAGE Hakkında...")
-        #msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        #msgBox.buttonClicked.connect(msgButtonClick)
-        self.msgBox.show()
-
-    def nedenShow(self):
-        self.msgBox2.setIcon(QMessageBox.Information)
-        self.msgBox2.setText("MSAGE içerisinde olası acil bir durumda kullanıcılara ulaşmak, gerektiğinde özel olarak bilgi vermek amacıyla toplanan tüm veriler MSAGE'in güvenli veri tabanlarında saklanmaktadır.")
-        self.msgBox2.setWindowTitle("Neden İstiyoruz?")
-        #msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        #msgBox.buttonClicked.connect(msgButtonClick)
-        self.msgBox2.show()
+        try:
+            self.fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;jpg Files (*.jpg)", options=options)
+            if self.fileName:
+                print(self.fileName)
+                dosya = self.fileName
+                pixmap = QPixmap(dosya)
+                pixmap4 = pixmap.scaled(101, 101, QtCore.Qt.KeepAspectRatio)
+                self.profilresmilabel.setPixmap(pixmap4)
+                print("Profil resmi eklendi.")
+            else:
+                self.control = "x"
+                print("Profil resmi eklenemedi.")
+                pass
+        except:
+            print("Profil resmi seçilemedi.")
+            pass
 
     def start(self):
         host = "127.0.0.1"

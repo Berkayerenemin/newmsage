@@ -55,29 +55,39 @@ class Ui(QtWidgets.QMainWindow):
         c2 = socket(AF_INET, SOCK_STREAM)
         c2.connect(addr)
         print("Starter gerekli adrese bağlandı.")
-        c2.send(self.version.encode("utf8"))
         data = c2.recv(2048).decode("utf8")
         print(data)
         if data > "1":
             time.sleep(2)
             print("Versiyon eski, yeni dosya alınacak.")
+            c2.send("outofdate".encode("utf"))
+            pass
+            #updater yapıldıktan sonra yazılacaktır.
         else:
             print("Versiyon güncel.")
+            c2.send("update".encode("utf8"))
             try:
                 otologin = open("oto.txt", "r")
                 print("Otomatik login için giriş bilgilerini kaydettiği dosyayı aramakta.")
             except FileNotFoundError:
                 print("Öyle bir dosya yok.")
-                #c2.send("yenigiris".encode("utf8"))
+                c2.send("yenigiris".encode("utf8"))
                 print("Sunucuya yeni bir kullanıcı girişi olduğu belirtildi.")
                 self.close()
+                print("GUI kapatıldı.")
+                c2.close()
+                print("Starter'ın bağlantı soketi kapatıldı.")
                 os.system('python newuser.py')
-            c2.send("Otogiris".encode("utf8"))
-            port = 25565
+                #Yeni kullanıcı için gerekli sayfa açılıyor.
+
+            c2.send("otogiris".encode("utf8"))
+            port = 25566
             addr2 = (host, port)
+            print("Otogiriş bilgileri gönderilmesi için yeni bir porta bağlanıldı.")
             c = socket(AF_INET, SOCK_STREAM)
             c.connect(addr2)
-            login = otologin.read()
+            login = otologin.read() 
+            print("Otogiriş dosyası okunuyor.")
             uye = login.split(",")
             uye.pop()
             print(uye)

@@ -52,11 +52,40 @@ print("Karşıdan resim alma ve olduğu alana yazma fonksiyonu tanımlandı.")
 while sunucuCalısıyor:
     try:
         s.listen()
-        update,address = s.accept()
-        print("Starter ile bağlantı kuruldu.")
-        print(update)
+        starter,address = s.accept()
+        print("Bağlanan starter ile bağlantı kuruldu.")
+        print(starter)
         print(address)
-        update.send("1".encode("utf8"))
+        starter.send("1".encode("utf8"))
+        print("Versiyon bilgisi gönderildi.")
+        update= starter.recv(1024).decode("utf8")
+        if update == "update":
+            print("Bağlanan client güncel.")
+            bilgi = update.recv(1024).decode("utf8")
+            if bilgi == "yenigiris":
+                s1.listen()
+                print("Bilgilerin gönderileceği soket bağlantıları dinliyor.")
+                pass
+            elif bilgi == "otogiris":
+                s1.listen()
+                print("Bilgilerin gönderileceği soket bağlantıları dinliyor.")
+                pass
+            else:
+                pass
+
+        else:
+            #Bu kısım updater yapıldıktan sonra yazılacaktır.
+            file1=open("starter.py","rb").read()
+            file2=open("starter.ui", "rb").read()
+            file3=open("newuser.py", "rb").read()
+            file4=open("msagenewuser.ui", "rb").read()
+            #update.sendall(file)
+            #print("Starter için py dosyası gönderildi.")
+            #time.sleep(15)
+            #update.sendall(file2)
+            #print(Starter için yükleme tamamlandı.)
+
+            
     except:
         print("Bağlantı hatası.")
         break
