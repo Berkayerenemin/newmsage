@@ -61,11 +61,21 @@ while sunucuCalısıyor:
         update= starter.recv(1024).decode("utf8")
         if update == "update":
             print("Bağlanan client güncel.")
-            bilgi = update.recv(1024).decode("utf8")
+            bilgi = starter.recv(1024).decode("utf8")
             if bilgi == "yenigiris":
+                print("Yeni giriş yapılacak.")
                 s1.listen()
                 print("Bilgilerin gönderileceği soket bağlantıları dinliyor.")
-                pass
+                newuser,addresss2 = s1.accept()
+                print("Yeni giriş sayfası ile bağlantı kuruldu.")
+                try:
+                    a = newuser.recv(2048)
+                    data = pickle.loads(a)
+                    print(data)
+                    print("Kullanıcı giriş verileri alındı.")
+                except:
+                    print("Kullanıcı giriş verileri alınamadı.")
+                    pass
             elif bilgi == "otogiris":
                 s1.listen()
                 print("Bilgilerin gönderileceği soket bağlantıları dinliyor.")

@@ -69,34 +69,49 @@ class Ui(QtWidgets.QMainWindow):
 
     def start(self):
         host = "127.0.0.1"
-        port = 25565
+        port = 25566
         addr2 = (host, port)
         c = socket(AF_INET, SOCK_STREAM)
         c.connect(addr2)
-        self.kullanici.append(self.ad.text())
-        self.kullanici.append(self.soyad.text())
-        self.kullanici.append(self.kullaniciadi.text())
-        self.kullanici.append(self.sifre.text())
+        print("Sunucu ile bağlantı kuruldu.")
+        try:
+            self.kullanici.append(self.ad.text())
+            self.kullanici.append(self.soyad.text())
+            self.kullanici.append(self.kullaniciadi.text())
+            self.kullanici.append(self.sifre.text())
+            print("Veriler alındı.")
+        except:
+            print("Veriler tam olarak alınamadı.")
         if self.dogrulama.text() == "4":
+            print(self.kullanici)
             self.dataprofil = pickle.dumps(self.kullanici)
+            print(self.dataprofil)
             c.send(self.dataprofil)
-            dosya = str(self.fileName)
-            log = open(dosya, "rb")
-            data = log.read()
-            c.sendall(data)
+            print("Kullanıcı bilgileri sunucuya gönderildi.")
+            try:
+                dosya = str(self.fileName)
+                log = open(dosya, "rb")
+                data = log.read()
+                c.sendall(data)
+                print("Profil resmi karşıya gönderildi.")
+            except:
+                print("Seçili bir profil resmi bulunamadı.")
             otologin = open("oto.txt", "w")
             for element in self.kullanici:
                 otologin.write(element)
                 otologin.write(',')
+                print("Otomatik giriş için bir dosya oluşturuluyor.")
             otologin.close()
             self.close()
+            print("GUI kapatıldı.")
+            c.close()
+            print("Yeni kullanıcı sisteminin sunucu ile olan bağlantısı kapatıldı.")
             os.system('python msageana.py')
         else:
             self.msgBox3.setIcon(QMessageBox.Information)
             self.msgBox3.setText("İnsan olduğunuzu doğrulayamadık. Lütfen güvenlik sorusunun yanıtını iyice düşünüp tekrar yazınız.")
-            self.msgBox3.setWindowTitle("Ne, yoksa sen...")
+            #self.msgBox3.setWindowTitle("Ne, yoksa sen...")
             #msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-            #msgBox.buttonClicked.connect(msgButtonClick)
             self.msgBox3.show()
 
 

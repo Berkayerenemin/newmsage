@@ -28,6 +28,9 @@ QLabel
 background:transparent;
 }</string>
   </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
@@ -108,7 +111,7 @@ background:#B99DE4;
 }</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QGroupBox" name="groupBox_2">
@@ -417,7 +420,7 @@ color:#ffffff;
        </widget>
       </widget>
      </widget>
-     <widget class="QWidget" name="page_2">
+     <widget class="QWidget" name="page">
       <property name="cursor">
        <cursorShape>ArrowCursor</cursorShape>
       </property>
