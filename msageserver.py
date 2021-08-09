@@ -31,7 +31,7 @@ s2.bind((ip,port2))
 s3.bind((ip,port3))
 print("Bağlantılar dinlemeye alındı.")
 
-with sqlite3.connect('quit.db') as db:
+with sqlite3.connect('data/quit.db') as db:
     c = db.cursor()
     c.execute('CREATE TABLE IF NOT EXISTS msg (id INTEGER NOT NULL ,message TEXT NOT NULL);')
     c.execute('CREATE TABLE IF NOT EXISTS user (id INTEGER NOT NULL ,username TEXT NOT NULL ,email TEXT NOT NULL ,acıklama TEXT NOT NULL);')
@@ -76,9 +76,9 @@ while sunucuCalısıyor:
         else:
             #Bu kısım updater yapıldıktan sonra yazılacaktır.
             file1=open("starter.py","rb").read()
-            file2=open("starter.ui", "rb").read()
+            file2=open("widgets/starter.ui", "rb").read()
             file3=open("newuser.py", "rb").read()
-            file4=open("msagenewuser.ui", "rb").read()
+            file4=open("widgets/msagenewuser.ui", "rb").read()
             #update.sendall(file)
             #print("Starter için py dosyası gönderildi.")
             #time.sleep(15)
