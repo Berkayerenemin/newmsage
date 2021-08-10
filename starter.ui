@@ -15,12 +15,13 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-   background: #c2afed;
+   background: #2c1e40;
 }
 
 QLabel
 {
 background:transparent;
+color:#ffffff;
 }</string>
   </property>
   <widget class="QGroupBox" name="groupBox">
@@ -35,7 +36,7 @@ background:transparent;
    <property name="styleSheet">
     <string notr="true">QGroupBox
 {
-background:#B99DE4;
+background:#2c1e40;
 border-radius:10px;
 }</string>
    </property>

@@ -28,6 +28,7 @@ class Ui(QtWidgets.QMainWindow):
         self.hakkimizda = self.findChild(QtWidgets.QPushButton, "pushButton_4")
         self.startbutton = self.findChild(QtWidgets.QPushButton, "pushButton_5")
         self.profilresmilabel = self.findChild(QtWidgets.QLabel, "label_7")
+        self.closebutton = self.findChild(QtWidgets.QPushButton, "pushButton_8")
         self.msgBox = QMessageBox()
         self.msgBox2 = QMessageBox()
         self.msgBox3 = QMessageBox()
@@ -39,12 +40,18 @@ class Ui(QtWidgets.QMainWindow):
         self.uyedon2.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page1))
         self.avatarresim.clicked.connect(self.avatarresimdef)
         self.startbutton.clicked.connect(self.start)
+        self.closebutton.clicked.connect(self.kapat)
 
         self.kullanici = []
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.setFocus()
         self.show()
+
+    def kapat(self):
+        print("Kapatma işlemi başlatıldı.")
+        self.close()
+        quit()
 
     def avatarresimdef(self):
         self.profilresmilabel.setText("")

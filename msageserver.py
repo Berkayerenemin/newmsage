@@ -66,13 +66,21 @@ while sunucuCalısıyor:
                 print("Yeni giriş yapılacak.")
                 s1.listen()
                 print("Bilgilerin gönderileceği soket bağlantıları dinliyor.")
-                newuser,addresss2 = s1.accept()
-                print("Yeni giriş sayfası ile bağlantı kuruldu.")
+                try:
+                    newuser,addresss2 = s1.accept()
+                    print("Yeni giriş sayfası ile bağlantı kuruldu.")
+                except:
+                    print("Bağlantı kurulmadı.")
+                    s.close()
+                    s1.close()
                 try:
                     a = newuser.recv(2048)
                     data = pickle.loads(a)
                     print(data)
                     print("Kullanıcı giriş verileri alındı.")
+                    clientCalisiyor = True
+                    client,address3 = s.accept()
+                    print(client)
                 except:
                     print("Kullanıcı giriş verileri alınamadı.")
                     pass

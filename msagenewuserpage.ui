@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>441</width>
-    <height>600</height>
+    <width>418</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,8 +20,8 @@
 
 QGroupBox
 {
-background:#B99DE4;
-border-radius:10px;
+background:#2c1e40;
+border-style: dotted;
 }
 QLabel
 {
@@ -35,11 +35,14 @@ background:transparent;
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>391</width>
+      <x>10</x>
+      <y>10</y>
+      <width>401</width>
       <height>561</height>
      </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
     </property>
     <property name="statusTip">
      <string/>
@@ -53,7 +56,7 @@ background:transparent;
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>50</x>
        <y>30</y>
        <width>151</width>
        <height>41</height>
@@ -69,6 +72,11 @@ background:transparent;
      </property>
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+color:#ffffff;
+}</string>
      </property>
      <property name="text">
       <string> MSAGE </string>
@@ -91,6 +99,11 @@ background:transparent;
        <bold>false</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+color:#ffffff;
+}</string>
+     </property>
      <property name="text">
       <string>Python ile kodlandı.</string>
      </property>
@@ -107,7 +120,7 @@ background:transparent;
      <property name="styleSheet">
       <string notr="true">QStackedWidget
 {
-background:#B99DE4;
+background:#2c1e40;
 }</string>
      </property>
      <property name="currentIndex">
@@ -126,7 +139,7 @@ background:#B99DE4;
        <property name="styleSheet">
         <string notr="true">QGroupBox
 {
-background:#C9B9E1 ;
+background:#2c1e40 ;
 border-radius:10px;
 }</string>
        </property>
@@ -153,9 +166,10 @@ border-radius:10px;
         <property name="styleSheet">
          <string notr="true">QLabel
 {
-background: #9b84d1;
+background: #423259;
 border-radius:15px;
 padding: 25px 25px;
+color: #ffffff;
 }</string>
         </property>
         <property name="text">
@@ -189,7 +203,7 @@ color:#ffffff;
 }</string>
         </property>
         <property name="text">
-         <string>Avatar Resmi Ekle</string>
+         <string>Profil Resmi Ekle</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="lineEdit">
@@ -209,9 +223,10 @@ color:#ffffff;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #B99DE4;
+background: #423259;
 border-radius:7px;
-padding: 10px 10px;
+padding: 5px 5px;
+color: #ffffff;
 }</string>
         </property>
         <property name="placeholderText">
@@ -235,9 +250,10 @@ padding: 10px 10px;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #B99DE4;
+background: #423259;
 border-radius:7px;
-padding: 10px 10px;
+padding: 5px 5px;
+color: #ffffff;
 }</string>
         </property>
         <property name="placeholderText">
@@ -261,9 +277,10 @@ padding: 10px 10px;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #B99DE4;
+background: #423259;
 border-radius:7px;
-padding: 10px 10px;
+padding: 5px 5px;
+color: #ffffff;
 }</string>
         </property>
         <property name="placeholderText">
@@ -287,9 +304,10 @@ padding: 10px 10px;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #B99DE4;
+background: #423259;
 border-radius:7px;
-padding: 10px 10px;
+padding: 5px 5px;
+color: #ffffff;
 }</string>
         </property>
         <property name="echoMode">
@@ -319,9 +337,10 @@ padding: 10px 10px;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #B99DE4;
+background: #423259;
 border-radius:7px;
-padding: 10px 10px;
+padding: 5px 5px;
+color: #ffffff;
 }</string>
         </property>
         <property name="placeholderText">
@@ -609,6 +628,35 @@ color:#ffffff;
        </property>
       </widget>
      </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>10</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background: #3c031c;
+color:#ffffff;
+}</string>
+     </property>
+     <property name="text">
+      <string>X</string>
+     </property>
     </widget>
    </widget>
   </widget>
