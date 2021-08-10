@@ -83,12 +83,13 @@ class Ui(QtWidgets.QMainWindow):
             c2.send("otogiris".encode("utf8"))
             port = 25566
             addr2 = (host, port)
-            print("Otogiriş bilgileri gönderilmesi için yeni bir porta bağlanıldı.")
             c = socket(AF_INET, SOCK_STREAM)
             c.connect(addr2)
+            print("Otogiriş bilgileri gönderilmesi için yeni bir porta bağlanıldı.")
             login = otologin.read() 
             print("Otogiriş dosyası okunuyor.")
             uye = login.split(",")
+            
             uye.pop()
             print(uye)
             self.dataprofil = pickle.dumps(uye)
