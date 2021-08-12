@@ -5,7 +5,7 @@ import os
 import time
 import socket
 from socket import AF_INET, socket, SOCK_STREAM
-from threading import Thread
+from threading import Event, Thread
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QFileDialog, QInputDialog
 import pickle
@@ -29,6 +29,7 @@ class Ui(QtWidgets.QMainWindow):
         self.startbutton = self.findChild(QtWidgets.QPushButton, "pushButton_5")
         self.profilresmilabel = self.findChild(QtWidgets.QLabel, "label_7")
         self.closebutton = self.findChild(QtWidgets.QPushButton, "pushButton_8")
+        #self.logo.setAlignment(QtCore.Qt.AlignCenter)
         self.msgBox = QMessageBox()
         self.msgBox2 = QMessageBox()
         self.msgBox3 = QMessageBox()
@@ -48,10 +49,27 @@ class Ui(QtWidgets.QMainWindow):
         self.setFocus()
         self.show()
 
+    def dropEvent(self, event):
+        if event.mimeData().hasUrls():
+            event.setDropAction(QtCore.Qt.CopyAction)
+            event.accept()
+
+            links = []
+            for url in event.mimeData().urls():
+                # https://doc.qt.io/qt-5/qurl.html
+                if url.isLocalFile():
+                    links.append(str(url.toLocalFile()))
+                else:
+                    links.append(str(url.toString()))
+            self.addItems(links)
+        else:
+            event.ignore()
+    
     def kapat(self):
         print("Kapatma işlemi başlatıldı.")
         self.close()
         quit()
+        #Soket bağlantısı da kesilecek.
 
     def avatarresimdef(self):
         self.profilresmilabel.setText("")
@@ -86,6 +104,7 @@ class Ui(QtWidgets.QMainWindow):
             self.kullanici.append(self.soyad.text())
             self.kullanici.append(self.kullaniciadi.text())
             self.kullanici.append(self.sifre.text())
+            print(self.avatarresim.dropEvent)
             print("Veriler alındı.")
         except:
             print("Veriler tam olarak alınamadı.")
@@ -114,6 +133,7 @@ class Ui(QtWidgets.QMainWindow):
             c.close()
             print("Yeni kullanıcı sisteminin sunucu ile olan bağlantısı kapatıldı.")
             os.system('python msageana.py')
+            quit()
         else:
             self.msgBox3.setIcon(QMessageBox.Information)
             self.msgBox3.setText("İnsan olduğunuzu doğrulayamadık. Lütfen güvenlik sorusunun yanıtını iyice düşünüp tekrar yazınız.")

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>418</width>
-    <height>581</height>
+    <width>667</width>
+    <height>802</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,8 +35,8 @@ background:transparent;
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>120</x>
+      <y>80</y>
       <width>401</width>
       <height>561</height>
      </rect>
@@ -53,61 +53,6 @@ background:transparent;
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>30</y>
-       <width>151</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Raleway ExtraBold</family>
-       <pointsize>28</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-color:#ffffff;
-}</string>
-     </property>
-     <property name="text">
-      <string> MSAGE </string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_14">
-     <property name="geometry">
-      <rect>
-       <x>280</x>
-       <y>540</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Bahnschrift</family>
-       <pointsize>10</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-color:#ffffff;
-}</string>
-     </property>
-     <property name="text">
-      <string>Python ile kodlandı.</string>
-     </property>
-    </widget>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="geometry">
       <rect>
@@ -152,7 +97,7 @@ border-radius:10px;
           <x>40</x>
           <y>280</y>
           <width>101</width>
-          <height>91</height>
+          <height>101</height>
          </rect>
         </property>
         <property name="font">
@@ -162,6 +107,9 @@ border-radius:10px;
           <weight>50</weight>
           <bold>false</bold>
          </font>
+        </property>
+        <property name="acceptDrops">
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">QLabel
@@ -179,9 +127,9 @@ color: #ffffff;
        <widget class="QPushButton" name="pushButton">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>390</y>
-          <width>141</width>
+          <x>170</x>
+          <y>350</y>
+          <width>121</width>
           <height>31</height>
          </rect>
         </property>
@@ -189,9 +137,9 @@ color: #ffffff;
          <font>
           <family>Bahnschrift</family>
           <pointsize>10</pointsize>
-          <weight>50</weight>
+          <weight>75</weight>
           <italic>false</italic>
-          <bold>false</bold>
+          <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -223,8 +171,8 @@ color:#ffffff;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #423259;
-border-radius:7px;
+border:none;
+border-bottom:1px solid  rgba(170,165,178,0.8);
 padding: 5px 5px;
 color: #ffffff;
 }</string>
@@ -250,8 +198,8 @@ color: #ffffff;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #423259;
-border-radius:7px;
+border:none;
+border-bottom:1px solid  rgba(170,165,178,0.8);
 padding: 5px 5px;
 color: #ffffff;
 }</string>
@@ -277,8 +225,8 @@ color: #ffffff;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #423259;
-border-radius:7px;
+border:none;
+border-bottom:1px solid  rgba(170,165,178,0.8);
 padding: 5px 5px;
 color: #ffffff;
 }</string>
@@ -304,8 +252,8 @@ color: #ffffff;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #423259;
-border-radius:7px;
+border:none;
+border-bottom:1px solid  rgba(170,165,178,0.8);
 padding: 5px 5px;
 color: #ffffff;
 }</string>
@@ -337,21 +285,21 @@ color: #ffffff;
         <property name="styleSheet">
          <string notr="true">QLineEdit
 {
-background: #423259;
-border-radius:7px;
+border:none;
+border-bottom:1px solid  rgba(170,165,178,0.8);
 padding: 5px 5px;
 color: #ffffff;
 }</string>
         </property>
         <property name="placeholderText">
-         <string>2x2 =</string>
+         <string>2 x 2 =</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_3">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>320</y>
+          <x>30</x>
+          <y>400</y>
           <width>121</width>
           <height>31</height>
          </rect>
@@ -368,7 +316,7 @@ color: #ffffff;
         <property name="styleSheet">
          <string notr="true">QPushButton
 {
-background: #310E68 ;
+background: transparent ;
 border-radius:7px;
 color:#ffffff;
 }</string>
@@ -381,7 +329,7 @@ color:#ffffff;
         <property name="geometry">
          <rect>
           <x>170</x>
-          <y>280</y>
+          <y>400</y>
           <width>121</width>
           <height>31</height>
          </rect>
@@ -398,7 +346,7 @@ color:#ffffff;
         <property name="styleSheet">
          <string notr="true">QPushButton
 {
-background: #310E68 ;
+background: transparent ;
 border-radius:7px;
 color:#ffffff;
 }</string>
@@ -411,7 +359,7 @@ color:#ffffff;
         <property name="geometry">
          <rect>
           <x>170</x>
-          <y>360</y>
+          <y>280</y>
           <width>121</width>
           <height>61</height>
          </rect>
@@ -652,15 +600,50 @@ color:#ffffff;
 {
 background: #3c031c;
 color:#ffffff;
+border-radius:7px;
+border-style: dotted;
 }</string>
      </property>
      <property name="text">
       <string>X</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>10</y>
+       <width>241</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Raleway Black</family>
+       <pointsize>30</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+background:transparent;
+color:#ffffff;
+}</string>
+     </property>
+     <property name="text">
+      <string>MSAGE</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="logo.qrc"/>
+ </resources>
  <connections/>
 </ui>

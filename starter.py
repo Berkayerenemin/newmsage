@@ -14,6 +14,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('starter.ui', self)
         self.giflabel = self.findChild(QtWidgets.QLabel, "label")
         self.progressbar = self.findChild(QtWidgets.QProgressBar, "progressBar")
+        self.logolabel = self.findChild(QtWidgets.QLabel, "label_2")
         self.start = 0
         self.progressbar.setValue(self.start)
         self.version = "v1a"
@@ -28,7 +29,7 @@ class Ui(QtWidgets.QMainWindow):
         self.baslat()
         print("Bağlantı kurulma izni verildi.")
 
-    
+        
     def movie(self):
         self.movie = QtGui.QMovie("shodaw.gif")
         size = QtCore.QSize(200, 161)
@@ -78,22 +79,23 @@ class Ui(QtWidgets.QMainWindow):
                 c2.close()
                 print("Starter'ın bağlantı soketi kapatıldı.")
                 os.system('python newuser.py')
+                quit()
                 #Yeni kullanıcı için gerekli sayfa açılıyor.
 
             c2.send("otogiris".encode("utf8"))
-            port = 25566
-            addr2 = (host, port)
+            port2 = 25566
+            addr2 = (host, port2)
             c = socket(AF_INET, SOCK_STREAM)
             c.connect(addr2)
             print("Otogiriş bilgileri gönderilmesi için yeni bir porta bağlanıldı.")
             login = otologin.read() 
             print("Otogiriş dosyası okunuyor.")
             uye = login.split(",")
-            
             uye.pop()
             print(uye)
             self.dataprofil = pickle.dumps(uye)
             c.send(self.dataprofil)
+            print("Kullanıcı bilgileri sunucuya gönderildi.")
             self.close()
             os.system('python msageana.py')
 

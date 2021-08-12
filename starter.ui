@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>364</width>
-    <height>329</height>
+    <width>375</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,9 +60,9 @@ border-radius:10px;
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>190</y>
+      <y>180</y>
       <width>231</width>
-      <height>61</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
@@ -75,6 +75,9 @@ border-radius:10px;
     </property>
     <property name="text">
      <string>MSAGE</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QProgressBar" name="progressBar">
@@ -109,6 +112,8 @@ border-radius:10px;
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="logo.qrc"/>
+ </resources>
  <connections/>
 </ui>
