@@ -13,12 +13,15 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__()
         uic.loadUi('starter.ui', self)
         self.giflabel = self.findChild(QtWidgets.QLabel, "label")
-        self.progressbar = self.findChild(QtWidgets.QProgressBar, "progressBar")
+        #self.progressbar = self.findChild(QtWidgets.QProgressBar, "progressBar")
         self.logolabel = self.findChild(QtWidgets.QLabel, "label_2")
+        self.uptlabel = self.findChild(QtWidgets.QLabel, "label_8")
         self.start = 0
-        self.progressbar.setValue(self.start)
+        #self.progressbar.setValue(self.start)
         self.version = "v1a"
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setFocus()
         #self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.show()
         print("Widgetlar oluşturuldu.")
@@ -32,7 +35,7 @@ class Ui(QtWidgets.QMainWindow):
         
     def movie(self):
         self.movie = QtGui.QMovie("shodaw.gif")
-        size = QtCore.QSize(200, 161)
+        size = QtCore.QSize(150, 150)
         self.movie.setScaledSize(size)
         self.giflabel.setMovie(self.movie)
         QApplication.processEvents()
@@ -44,7 +47,7 @@ class Ui(QtWidgets.QMainWindow):
         while self.completed < 100:
             QApplication.processEvents()
             self.completed += 0.0005
-            self.progressbar.setValue(self.completed)
+            print(self.completed)
         print("Progress bar tammalandı.")
 
 

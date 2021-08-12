@@ -39,7 +39,7 @@ class Ui(QtWidgets.QMainWindow):
         self.neden.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page3))
         self.uyedon1.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page1))
         self.uyedon2.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page1))
-        self.avatarresim.clicked.connect(self.avatarresimdef)
+        #self.avatarresim.clicked.connect(self.avatarresimdef)
         self.startbutton.clicked.connect(self.start)
         self.closebutton.clicked.connect(self.kapat)
 

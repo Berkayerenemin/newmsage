@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>375</width>
-    <height>328</height>
+    <width>330</width>
+    <height>363</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,30 +15,30 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-   background: #2c1e40;
+   background: transparent;
 }
 
+QGroupBox
+{
+background: #f0eef3;
+border-radius:5px;
+}
 QLabel
 {
 background:transparent;
-color:#ffffff;
 }</string>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
-     <width>341</width>
+     <y>30</y>
+     <width>301</width>
      <height>301</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QGroupBox
-{
-background:#2c1e40;
-border-radius:10px;
-}</string>
+    <string notr="true"/>
    </property>
    <property name="title">
     <string/>
@@ -46,68 +46,48 @@ border-radius:10px;
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>20</y>
-      <width>181</width>
+      <x>80</x>
+      <y>50</y>
+      <width>161</width>
       <height>161</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>180</y>
-      <width>231</width>
-      <height>81</height>
+      <x>100</x>
+      <y>240</y>
+      <width>121</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Raleway Black</family>
-      <pointsize>48</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+background:transparent;
+color:#000000;
+}</string>
     </property>
     <property name="text">
      <string>MSAGE</string>
     </property>
     <property name="scaledContents">
      <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="progressBar">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>260</y>
-      <width>321</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Raleway ExtraBold</family>
-      <pointsize>8</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius:10px;</string>
-    </property>
-    <property name="value">
-     <number>1</number>
-    </property>
-    <property name="textVisible">
-     <bool>false</bool>
-    </property>
-    <property name="textDirection">
-     <enum>QProgressBar::TopToBottom</enum>
     </property>
    </widget>
   </widget>
