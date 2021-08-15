@@ -10,6 +10,7 @@ s1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 s3 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s5 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 sunucuCalısıyor = True
 print("Sunucu hatasız açıldı.")
@@ -20,6 +21,7 @@ port1 = 25566
 port2 = 25567
 port3 = 25568
 portodasayisi = 12255
+portkullanicisayisi = 13255
 print("İp ve portlar belirlendi.")
 
 app = {}
@@ -32,6 +34,7 @@ s1.bind((ip,port1))
 s2.bind((ip,port2))
 s3.bind((ip,port3))
 s4.bind((ip, portodasayisi))
+s5.bind((ip, portkullanicisayisi))
 print("Bağlantılar dinlemeye alındı.")
 
 """with sqlite3.connect('quit.db') as db:
@@ -57,7 +60,6 @@ def hall(client, kullaniciadi, app, clientCalisiyor):
         mesaj = client.recv(1024).decode("utf8")
         mesaj2 = str(kullaniciadi)+" : "+mesaj
         print(mesaj2)
-        app["anaoda"][kullaniciadi] = client
         name = list(app["anaoda"].keys())
         print(app["anaoda"].items)
         print(app["anaoda"].keys())
@@ -76,6 +78,16 @@ def roomnumbersend(roomclient, app, clientCalisiyor):
     mesaj3 ="\n".join(numberroom)
     print(mesaj3)
     roomclient.send(mesaj3.encode("utf8"))
+
+def kullanicinumber(usernclient, app, clientCalisiyor, anaodadamı, odaadi):
+    if anaodadamı == True:
+        name = list(app["anaoda"].keys())
+        mesaj4="\n".join(name)
+        usernclient.send(mesaj4.encode("utf8"))
+    else:
+        nameroom = list(app[odaadi].keys())
+        mesaj5="\n".join(baglantılar)
+        usernclient.send(mesaj5.encode("utf8"))
 
 
 while sunucuCalısıyor:
@@ -123,9 +135,12 @@ while sunucuCalısıyor:
                 print(client)
                 s4.listen()
                 roomclient,address4 = s4.accept()
+                app["anaoda"][kullaniciadi] = client
                 threading.Thread(target = hall, args = (client, kullaniciadi, app, clientCalisiyor)).start()
                 roomnumberthread = threading.Thread(target = roomnumbersend, args = (roomclient, app, clientCalisiyor))
                 roomnumberthread.start()
+                usernumberthread = threading.Thread(target = kullanicinumber, args = (usernclient, app, clientCalisiyor, anaodadamı, False))
+                usernumberthread.start()
             elif bilgi == "otogiris":
                 s1.listen()
                 print("Bilgilerin gönderileceği soket bağlantıları dinliyor.")
@@ -154,13 +169,18 @@ while sunucuCalısıyor:
                 print("Kullanıcı ana programı çalışıyor.")
                 s3.listen()
                 client,address3 = s3.accept()
+                anaodadamı = True
                 print(client)
                 s4.listen()
                 roomclient,address4 = s4.accept()
-
+                s5.listen()
+                usernclient,address5 = s5.accept()
+                app["anaoda"][kullaniciadi] = client
                 threading.Thread(target = hall, args = (client, kullaniciadi, app, clientCalisiyor)).start()
                 roomnumberthread = threading.Thread(target = roomnumbersend, args = (roomclient, app, clientCalisiyor))
                 roomnumberthread.start()
+                usernumberthread = threading.Thread(target = kullanicinumber, args = (usernclient, app, clientCalisiyor, anaodadamı, False))
+                usernumberthread.start()
             else:
                 pass
 

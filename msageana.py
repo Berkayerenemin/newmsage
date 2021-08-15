@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QMenu
 import sys
 import os
 import time
@@ -8,7 +8,7 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QFileDialog, QInputDialog
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QEvent
 import pickle
 
 class Ui(QtWidgets.QMainWindow):
@@ -19,31 +19,41 @@ class Ui(QtWidgets.QMainWindow):
         self.ortamesaj = self.findChild(QtWidgets.QListWidget, "listWidget")
         self.kisilerlist = self.findChild(QtWidgets.QListWidget, "listWidget_3")
         self.odalarlist = self.findChild(QtWidgets.QListWidget, "listWidget_2")
+        self.kisilerlist.installEventFilter(self)
+        self.odalarlist.installEventFilter(self)
+        self.sayfadegistirme = self.findChild(QtWidgets.QStackedWidget, "stackedWidget")
         self.odaacklama = self.findChild(QtWidgets.QLabel, "label")
         self.logo = self.findChild(QtWidgets.QLabel, "label_2")
         self.odaekle = self.findChild(QtWidgets.QPushButton, "pushButton")
         self.cikis = self.findChild(QtWidgets.QPushButton, "pushButton_3")
-        self.profile = self.findChild(QtWidgets.QPushButton, "pushButton_4")
+        self.dahafazla = self.findChild(QtWidgets.QPushButton, "pushButton_4")
         self.addbuton = self.findChild(QtWidgets.QPushButton, "pushButton_2")
         self.buyutme = self.findChild(QtWidgets.QPushButton, "pushButton_5")
         self.cikis.clicked.connect(self.kapat)
-
+        self.dahafazla.clicked.connect(self.sfdeg)
+        print(self.sayfadegistirme.currentIndex())
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        
         self.setFocus()
         self.show()
 
         host = "127.0.0.1"
         port = 25568
         portrroom = 12255
+        userrroom = 13255
         ADDR = (host,port)
         ADDR2 = (host, portrroom)
+        ADDR3 = (host, userrroom)
         self.client = socket(AF_INET, SOCK_STREAM)
         self.client.connect(ADDR)
         print("25565 numaralı porttan bağlantı sağlandı.")
         self.clientroom = socket(AF_INET, SOCK_STREAM)
         self.clientroom.connect(ADDR2)
         print("12255 numaralı porttan bağlantı sağlandı.")
+        self.usernroom = socket(AF_INET, SOCK_STREAM)
+        self.usernroom.connect(ADDR3)
+        print("13255 numaralı porttan bağlantı sağlandı.")
 
         receive_thread = Thread(target=self.receive)
         receive_thread.start()
@@ -51,6 +61,29 @@ class Ui(QtWidgets.QMainWindow):
         room_thread = Thread(target= self.roomnumber)
         room_thread.start()
         print("Roomnumber, thread ile bağlantı kurdu.")
+        user_thread = Thread(target= self.usernumber)
+        user_thread.start()
+
+    def eventFilter(self, source, event):
+        if event.type() == QEvent.ContextMenu and source is self.odalarlist:
+            menu = QMenu()
+            menu.addAction("Odaya Katıl")
+
+            #Eğer herhangi bir odada ise odadan çık komutu eklenecek.
+
+            if menu.exec_(event.globalPos()):
+                print("Basıldı")
+        
+            return True
+        return super().eventFilter(source, event)
+
+    def sfdeg(self):
+        self.sayfadegistirme.setCurrentWidget(self.page_2)
+        if self.sayfadegistirme.currentIndex() == 1:
+            self.dahafazla.setText("Ana Sayfa")
+            #Tekrardan ana sayfaya dönmek gerekecek.
+        else:
+            pass
 
     def kapat(self):
         print("Kapatma işlemi başlatıldı.")
@@ -104,6 +137,16 @@ class Ui(QtWidgets.QMainWindow):
             except:
                 print("Oda listesi alınamadı.")
                 #Socket veya uygulama kapatılacak.
+    
+    def usernumber(self):
+        while True:
+            try:
+                self.kullanicisayisi = self.usernroom.recv(2048).decode("utf8")
+                self.kisilerlist.addItem(self.kullanicisayisi)
+            except:
+                print("Kişi listesi alınamadı.")
+                #Socket veya uygulama kapatılacak.
+
 
 
 app = QtWidgets.QApplication(sys.argv)

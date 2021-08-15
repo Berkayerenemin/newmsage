@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1655</width>
-    <height>927</height>
+    <height>923</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,8 +35,8 @@ background:transparent;
     </property>
     <property name="styleSheet">
      <string notr="true">QGroupBox {
-border-style: dotted;
-background:#1e1827 ;
+background:#f0eef3 ;
+border-radius:5px;
 }</string>
     </property>
     <property name="title">
@@ -47,15 +47,17 @@ background:#1e1827 ;
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>1401</width>
+       <width>1551</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">QGroupBox
 {
-background: #310E68 ;
+background: #cfccd4 ;
 border-style: dotted;
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;
 }</string>
      </property>
      <property name="title">
@@ -64,7 +66,7 @@ border-style: dotted;
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>1310</x>
+        <x>1460</x>
         <y>0</y>
         <width>91</width>
         <height>31</height>
@@ -74,16 +76,17 @@ border-style: dotted;
        <font>
         <family>Bahnschrift</family>
         <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton
 {
-background: #2c1e40;
+background: #5dc8da;
 color:#ffffff;
-border-style: dotted;
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;
 }</string>
       </property>
       <property name="text">
@@ -110,7 +113,7 @@ border-style: dotted;
       <property name="styleSheet">
        <string notr="true">QLabel
 {
-color:#ffffff;
+color:#000000;
 }</string>
       </property>
       <property name="text">
@@ -122,7 +125,7 @@ color:#ffffff;
        <rect>
         <x>80</x>
         <y>1</y>
-        <width>331</width>
+        <width>1041</width>
         <height>31</height>
        </rect>
       </property>
@@ -137,11 +140,47 @@ color:#ffffff;
       <property name="styleSheet">
        <string notr="true">QLabel
 {
-color:#ffffff;
+color:#000000;
 }</string>
       </property>
       <property name="text">
        <string>MSAGE sunucularına bağlı herkesin konuşabildiği ortak bir alan.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>1390</x>
+        <y>0</y>
+        <width>61</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bahnschrift</family>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel 
+{
+color:#000000;
+}</string>
+      </property>
+      <property name="text">
+       <string>MSAGE </string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -149,9 +188,9 @@ color:#ffffff;
      <property name="geometry">
       <rect>
        <x>1610</x>
-       <y>0</y>
-       <width>31</width>
-       <height>31</height>
+       <y>10</y>
+       <width>21</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="font">
@@ -165,8 +204,8 @@ color:#ffffff;
      <property name="styleSheet">
       <string notr="true">QPushButton
 {
-background:#1e1827;
-color:#ffffff;
+background:transparent;
+color:#000000;
 border-style: dotted;
 }</string>
      </property>
@@ -177,10 +216,10 @@ border-style: dotted;
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>1580</x>
-       <y>0</y>
-       <width>31</width>
-       <height>31</height>
+       <x>1590</x>
+       <y>10</y>
+       <width>21</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="font">
@@ -194,8 +233,8 @@ border-style: dotted;
      <property name="styleSheet">
       <string notr="true">QPushButton
 {
-background:#1e1827;
-color:#ffffff;
+background:transparent;
+color:#000000;
 border-style: dotted;
 }</string>
      </property>
@@ -206,10 +245,10 @@ border-style: dotted;
     <widget class="QPushButton" name="pushButton_6">
      <property name="geometry">
       <rect>
-       <x>1550</x>
-       <y>0</y>
-       <width>31</width>
-       <height>31</height>
+       <x>1570</x>
+       <y>10</y>
+       <width>21</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="font">
@@ -223,49 +262,13 @@ border-style: dotted;
      <property name="styleSheet">
       <string notr="true">QPushButton
 {
-background:#1e1827;
-color:#ffffff;
+background:transparent;
+color:#000000;
 border-style: dotted;
 }</string>
      </property>
      <property name="text">
       <string>_</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>1420</x>
-       <y>-10</y>
-       <width>121</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Franklin Gothic Medium</family>
-       <pointsize>18</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel 
-{
-color:#ffffff;
-}</string>
-     </property>
-     <property name="text">
-      <string>MSAGE </string>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::AutoText</enum>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
      </property>
     </widget>
     <widget class="QStackedWidget" name="stackedWidget">
@@ -296,8 +299,8 @@ color:#ffffff;
        <property name="styleSheet">
         <string notr="true">QGroupBox
 {
-background:#1e1827 ;
-border-style: dotted;
+background:#f0eef3 ;
+border-radius:15px;
 }</string>
        </property>
        <property name="title">
@@ -323,10 +326,11 @@ border-style: dotted;
         <property name="styleSheet">
          <string notr="true">QListWidget
 {
-background:#1e1827  ;
+background:#e6e3ec  ;
 padding:5px;
-border-style: dotted;
-color:#ffffff;
+
+border-radius:10px;
+color:#000000;
 }</string>
         </property>
         <property name="isWrapping" stdset="0">
@@ -347,18 +351,18 @@ color:#ffffff;
         </property>
         <property name="font">
          <font>
-          <family>Raleway</family>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <family>Bahnschrift</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">QListWidget
 {
-background:#1e1827  ;
-border: 0;
-color:#ffffff;
+background:#e6e3ec  ;
+border-radius:10px;
+color:#000000;
 padding:5px;
 
 }</string>
@@ -376,19 +380,18 @@ padding:5px;
        </property>
        <property name="font">
         <font>
-         <family>Raleway</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Bahnschrift</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QListWidget
 {
-background: #2c1e40 ;
-color:#ffffff;
-border-top-right-radius:10px;
-border-bottom-right-radius:10px;
+background: #e6e3ec;
+color:#000000;
+border-radius:10px;
 padding:5px;
 }</string>
        </property>
@@ -404,17 +407,17 @@ padding:5px;
        </property>
        <property name="font">
         <font>
-         <family>Raleway SemiBold</family>
+         <family>Bahnschrift</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QLineEdit
 {
-background:#2c1e40 ;
-color:#ffffff;
+background:#cfccd4 ;
+color:#000000;
 padding:5px;
 border-style: dotted;
 }</string>
@@ -440,7 +443,7 @@ border-style: dotted;
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
-background:#310E68;
+background:#5dc8da;
 padding: 2px;
 border-radius: 5px;
 color:#ffffff;
@@ -452,63 +455,178 @@ color:#ffffff;
       </widget>
      </widget>
      <widget class="QWidget" name="page_2">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QGroupBox" name="groupBox_4">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>71</width>
-         <height>31</height>
+         <x>1470</x>
+         <y>0</y>
+         <width>161</width>
+         <height>831</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Bahnschrift</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton
+        <string notr="true">QGroupBox
 {
-background: #2c1e40;
-color:#ffffff;
-border-style: dotted;
-}</string>
+background: #e6e3ec;
+color:#000000;
+border-radius:10px;
+padding:5px;
+}
+</string>
        </property>
-       <property name="text">
-        <string>PROFİLİM</string>
+       <property name="title">
+        <string/>
        </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>50</y>
-         <width>71</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Bahnschrift</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Bahnschrift</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton
 {
-background: #2c1e40;
+background: #5dc8da;
 color:#ffffff;
-border-style: dotted;
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;
 }</string>
-       </property>
-       <property name="text">
-        <string>ODA</string>
-       </property>
+        </property>
+        <property name="text">
+         <string>PROFİLİM</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>70</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Bahnschrift</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton
+{
+background: #5dc8da;
+color:#ffffff;
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;
+}</string>
+        </property>
+        <property name="text">
+         <string>ODALAR </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>220</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Bahnschrift</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton
+{
+background: #5dc8da;
+color:#ffffff;
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;
+}</string>
+        </property>
+        <property name="text">
+         <string>HAKKIMIZDA</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_10">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>120</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Bahnschrift</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton
+{
+background: #5dc8da;
+color:#ffffff;
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;
+}</string>
+        </property>
+        <property name="text">
+         <string>GÜVENLİK</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>170</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Bahnschrift</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton
+{
+background: #5dc8da;
+color:#ffffff;
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;
+}</string>
+        </property>
+        <property name="text">
+         <string>GİZLİLİK</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>

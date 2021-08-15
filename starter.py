@@ -44,7 +44,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def progress(self):
         self.completed = 0
-        while self.completed < 100:
+        while self.completed < 10:
             QApplication.processEvents()
             self.completed += 0.0005
             print(self.completed)
