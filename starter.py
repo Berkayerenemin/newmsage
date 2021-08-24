@@ -6,6 +6,7 @@ import time
 import socket
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
+from PyQt5.QtCore import Qt, QEvent, QPoint
 import pickle
 
 class Ui(QtWidgets.QMainWindow):
@@ -50,7 +51,15 @@ class Ui(QtWidgets.QMainWindow):
             print(self.completed)
         print("Progress bar tammalandı.")
 
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
 
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
+        
     def baslat(self):
         host = "127.0.0.1"
         port = 25565

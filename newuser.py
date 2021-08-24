@@ -7,6 +7,7 @@ import socket
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Event, Thread
 from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import Qt, QEvent, QPoint
 from PyQt5.QtWidgets import QFileDialog, QInputDialog
 import pickle
 
@@ -34,7 +35,7 @@ class Ui(QtWidgets.QMainWindow):
         self.msgBox2 = QMessageBox()
         self.msgBox3 = QMessageBox()
         self.uyedon1 = self.findChild(QtWidgets.QPushButton, "pushButton_6")
-        self.uyedon2 = self.findChild(QtWidgets.QPushButton, "pushButton_7")
+        self.uyedon2 = self.findChild(QtWidgets.QPushButton, "pushButton_9")
         self.hakkimizda.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page2))
         self.neden.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page3))
         self.uyedon1.clicked.connect(lambda: self.stackwidget.setCurrentWidget(self.page1))
@@ -49,7 +50,15 @@ class Ui(QtWidgets.QMainWindow):
         self.setFocus()
         self.show()
 
-    def dropEvent(self, event):
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
+    """def dropEvent(self, event):
         if event.mimeData().hasUrls():
             event.setDropAction(QtCore.Qt.CopyAction)
             event.accept()
@@ -63,7 +72,7 @@ class Ui(QtWidgets.QMainWindow):
                     links.append(str(url.toString()))
             self.addItems(links)
         else:
-            event.ignore()
+            event.ignore()"""
     
     def kapat(self):
         print("Kapatma işlemi başlatıldı.")

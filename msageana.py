@@ -8,7 +8,7 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QFileDialog, QInputDialog
-from PyQt5.QtCore import Qt, QEvent
+from PyQt5.QtCore import Qt, QEvent, QPoint
 import pickle
 
 class Ui(QtWidgets.QMainWindow):
@@ -77,6 +77,14 @@ class Ui(QtWidgets.QMainWindow):
             return True
         return super().eventFilter(source, event)
 
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
     def sfdeg(self):
         self.sayfadegistirme.setCurrentWidget(self.page_2)
         if self.sayfadegistirme.currentIndex() == 1:
@@ -98,7 +106,12 @@ class Ui(QtWidgets.QMainWindow):
     def receive(self):
 
         while True:
-            try:
+            self.msg = self.client.recv(2048).decode("utf8")
+            if not self.msg:
+                print("Mesaj alınamadı.")
+            else:
+                self.ortamesaj.addItem(self.msg)
+            """try:
                 self.roommsg = self.client.recv(2048).decode("utf8")
                 b = 150
                 z = 0
@@ -113,7 +126,7 @@ class Ui(QtWidgets.QMainWindow):
                 else:
                     self.ortamesaj.addItem(self.roommsg)
             except:
-                print("x")
+                print("x")"""
 
     """def profiledef(self):
         os.system('python msageprofile.py')"""

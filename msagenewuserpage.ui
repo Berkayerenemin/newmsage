@@ -376,10 +376,10 @@ padding: 28px 28px 28px 28px;
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>40</x>
          <y>120</y>
-         <width>261</width>
-         <height>171</height>
+         <width>291</width>
+         <height>221</height>
         </rect>
        </property>
        <property name="font">
@@ -413,32 +413,11 @@ padding: 28px 28px 28px 28px;
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>80</y>
-         <width>321</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Bahnschrift</family>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>HAKKIMIZDA</string>
-       </property>
-      </widget>
       <widget class="QPushButton" name="pushButton_6">
        <property name="geometry">
         <rect>
-         <x>200</x>
-         <y>330</y>
+         <x>170</x>
+         <y>510</y>
          <width>121</width>
          <height>31</height>
         </rect>
@@ -455,9 +434,9 @@ padding: 28px 28px 28px 28px;
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
-background: #310E68 ;
+background: transparent ;
 border-radius:7px;
-color:#ffffff;
+color:#8e8e8e;
 }</string>
        </property>
        <property name="text">
@@ -466,61 +445,10 @@ color:#ffffff;
       </widget>
      </widget>
      <widget class="QWidget" name="page_3">
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>80</y>
-         <width>321</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Bahnschrift</family>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>NEDEN İSTİYORUZ?</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="geometry">
-        <rect>
-         <x>200</x>
-         <y>330</y>
-         <width>121</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Bahnschrift</family>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton
-{
-background: #310E68 ;
-border-radius:7px;
-color:#ffffff;
-}</string>
-       </property>
-       <property name="text">
-        <string>Üye Ol</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_5">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>60</x>
          <y>120</y>
          <width>261</width>
          <height>171</height>
@@ -555,6 +483,36 @@ color:#ffffff;
        </property>
        <property name="wordWrap">
         <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>510</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Bahnschrift</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+background: transparent ;
+border-radius:7px;
+color:#8e8e8e;
+}</string>
+       </property>
+       <property name="text">
+        <string>Üye Ol</string>
        </property>
       </widget>
      </widget>
