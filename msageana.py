@@ -1,20 +1,41 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-from PyQt5.QtWidgets import QApplication, QMenu
+from PyQt5.QtWidgets import QApplication, QMenu, QFileDialog, QInputDialog
+from PyQt5.QtCore import Qt, QEvent, QPoint, QThread, pyqtBoundSignal, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap
 import sys
 import os
 import time
 import socket
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
-from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtWidgets import QFileDialog, QInputDialog
-from PyQt5.QtCore import Qt, QEvent, QPoint
 import pickle
+
+class Conn():
+    host = "127.0.0.1"
+    port = 25568
+    portrroom = 12255
+    userrroom = 13255
+    ADDR = (host,port)
+    ADDR2 = (host, portrroom)
+    ADDR3 = (host, userrroom)
+
+    client = socket(AF_INET, SOCK_STREAM)
+    client.connect(ADDR)
+    print("25565 numaralı porttan bağlantı sağlandı.")
+    clientroom = socket(AF_INET, SOCK_STREAM)
+    clientroom.connect(ADDR2)
+    print("12255 numaralı porttan bağlantı sağlandı.")
+    usernroom = socket(AF_INET, SOCK_STREAM)
+    usernroom.connect(ADDR3)
+    print("13255 numaralı porttan bağlantı sağlandı.")
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
         uic.loadUi('msageana2.ui', self)
+        self.Receiver = Receive()
+        self.Room = RoomN()
+        self.User = UserN()
         self.satir = self.findChild(QtWidgets.QLineEdit, "lineEdit")
         self.ortamesaj = self.findChild(QtWidgets.QListWidget, "listWidget")
         self.kisilerlist = self.findChild(QtWidgets.QListWidget, "listWidget_3")
@@ -29,40 +50,25 @@ class Ui(QtWidgets.QMainWindow):
         self.dahafazla = self.findChild(QtWidgets.QPushButton, "pushButton_4")
         self.addbuton = self.findChild(QtWidgets.QPushButton, "pushButton_2")
         self.buyutme = self.findChild(QtWidgets.QPushButton, "pushButton_5")
+
+        self.Receiver.msg_signal.connect(lambda data: self.ortamesaj.addItem(str(data)))
+        self.Room.msg_signal_2.connect(lambda data2: self.odalarlist.addItem(str(data2)))
+        self.User.msg_signal_3.connect(lambda data3: self.kisilerlist.addItem(str(data3)))
+
         self.cikis.clicked.connect(self.kapat)
         self.dahafazla.clicked.connect(self.sfdeg)
         print(self.sayfadegistirme.currentIndex())
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        
+
+        self.Receiver.start()
+        self.Room.start()
+        self.User.start()
+
+        self.client = Conn.client
+
         self.setFocus()
         self.show()
-
-        host = "127.0.0.1"
-        port = 25568
-        portrroom = 12255
-        userrroom = 13255
-        ADDR = (host,port)
-        ADDR2 = (host, portrroom)
-        ADDR3 = (host, userrroom)
-        self.client = socket(AF_INET, SOCK_STREAM)
-        self.client.connect(ADDR)
-        print("25565 numaralı porttan bağlantı sağlandı.")
-        self.clientroom = socket(AF_INET, SOCK_STREAM)
-        self.clientroom.connect(ADDR2)
-        print("12255 numaralı porttan bağlantı sağlandı.")
-        self.usernroom = socket(AF_INET, SOCK_STREAM)
-        self.usernroom.connect(ADDR3)
-        print("13255 numaralı porttan bağlantı sağlandı.")
-
-        receive_thread = Thread(target=self.receive)
-        receive_thread.start()
-        print("Receive, thread ile bağlantı kurdu.")
-        room_thread = Thread(target= self.roomnumber)
-        room_thread.start()
-        print("Roomnumber, thread ile bağlantı kurdu.")
-        user_thread = Thread(target= self.usernumber)
-        user_thread.start()
 
     def eventFilter(self, source, event):
         if event.type() == QEvent.ContextMenu and source is self.odalarlist:
@@ -85,6 +91,16 @@ class Ui(QtWidgets.QMainWindow):
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
 
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key_Return:
+            self.send()
+            print("Enter tuşuna basıldı ve gönderme işlemi başlatıldı.")
+    
+    def send(self):
+        self.msg = self.satir.text()
+        self.satir.setText("")
+        self.client.send(bytes(self.msg, "utf8"))
+
     def sfdeg(self):
         self.sayfadegistirme.setCurrentWidget(self.page_2)
         if self.sayfadegistirme.currentIndex() == 1:
@@ -102,63 +118,82 @@ class Ui(QtWidgets.QMainWindow):
         pixmap = QPixmap('msagelogo.png')
         pixmap_resized = pixmap.scaled(600, 1500, QtCore.Qt.KeepAspectRatio)
         self.logo.setPixmap(pixmap_resized)
+        
 
-    def receive(self):
 
+
+class Receive(QThread):
+
+    msg_signal = pyqtSignal(str)
+
+    def __init__(self):
+        QThread.__init__(self)
+        self.client = Conn.client
+
+    def run(self):
         while True:
             self.msg = self.client.recv(2048).decode("utf8")
             if not self.msg:
                 print("Mesaj alınamadı.")
             else:
-                self.ortamesaj.addItem(self.msg)
-            """try:
-                self.roommsg = self.client.recv(2048).decode("utf8")
-                b = 150
-                z = 0
-                a = len(self.roommsg)
-                t = int(round(a/b))
-                if t>1:
-                    for _ in range(t+1):
-                        self.msgnew= self.roommsg[z:b]
-                        self.ortamesaj.addItem(self.msgnew)
-                        z = b
-                        b += 150
-                else:
-                    self.ortamesaj.addItem(self.roommsg)
-            except:
-                print("x")"""
+                #self.ortamesaj.addItem(self.msg)
+                self.msg_signal.emit(self.msg)
 
-    """def profiledef(self):
-        os.system('python msageprofile.py')"""
+    def stop(self):
+        print('Stopping thread...')
+        self.terminate()
 
-    def send(self):
-        self.msg = self.satir.text()
-        self.satir.setText("")
-        self.client.send(bytes(self.msg, "utf8"))
-        print(self.msg)
 
-    def keyPressEvent(self, e):
-        if e.key() == Qt.Key_Return:
-            self.send()
-            print("Enter tuşuna basıldı ve gönderme işlemi başlatıldı.")
-    
-    def roomnumber(self):
+
+
+class RoomN(QThread):
+
+    msg_signal_2 = pyqtSignal(str)
+
+    def __init__(self):
+        QThread.__init__(self)
+        self.clientnroom = Conn.clientroom
+
+    def run(self):
         while True:
             try:
-                self.odasayisi = self.clientroom.recv(2048).decode("utf8")
-                self.odalarlist.addItem(self.odasayisi)
+                self.odasayisi = self.clientnroom.recv(2048).decode("utf8")
+                print(self.odasayisi)
+                #self.odalarlist.addItem(self.odasayisi)
+                self.msg_signal_2.emit(self.odasayisi)
             except:
                 print("Oda listesi alınamadı.")
                 #Socket veya uygulama kapatılacak.
-    
-    def usernumber(self):
+
+    def stop(self):
+        print('Stopping thread...')
+        self.terminate()
+
+
+
+
+class UserN(QThread):
+
+    msg_signal_3 = pyqtSignal(str)
+
+    def __init__(self):
+        QThread.__init__(self)
+        self.usernroom = Conn.usernroom
+
+    def run(self):
         while True:
             try:
                 self.kullanicisayisi = self.usernroom.recv(2048).decode("utf8")
-                self.kisilerlist.addItem(self.kullanicisayisi)
+                print(self.kullanicisayisi)
+                #self.kisilerlist.addItem(self.kullanicisayisi)
+                self.msg_signal_3.emit(self.kullanicisayisi)
             except:
                 print("Kişi listesi alınamadı.")
                 #Socket veya uygulama kapatılacak.
+
+    def stop(self):
+        print('Stopping thread...')
+        self.terminate()
 
 
 
