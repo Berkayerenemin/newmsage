@@ -8,6 +8,7 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from PyQt5.QtCore import Qt, QEvent, QPoint
 import pickle
+import subprocess
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -70,12 +71,13 @@ class Ui(QtWidgets.QMainWindow):
         print("Starter gerekli adrese bağlandı.")
         data = c2.recv(2048).decode("utf8")
         print(data)
-        if data > "1":
+        if data > "2":
             time.sleep(2)
             print("Versiyon eski, yeni dosya alınacak.")
             c2.send("outofdate".encode("utf"))
-            pass
-            #updater yapıldıktan sonra yazılacaktır.
+            c2.close
+            subprocess.Popen("python updater.py")
+            quit()
         else:
             print("Versiyon güncel.")
             c2.send("update".encode("utf8"))
@@ -108,8 +110,8 @@ class Ui(QtWidgets.QMainWindow):
             self.dataprofil = pickle.dumps(uye)
             c.send(self.dataprofil)
             print("Kullanıcı bilgileri sunucuya gönderildi.")
-            self.close()
             os.system('python msageana.py')
+            quit()
 
 
 app = QtWidgets.QApplication(sys.argv)

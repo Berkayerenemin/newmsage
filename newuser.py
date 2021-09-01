@@ -149,6 +149,7 @@ class Ui(QtWidgets.QMainWindow):
             #self.msgBox3.setWindowTitle("Ne, yoksa sen...")
             #msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             self.msgBox3.show()
+            
 
 
 

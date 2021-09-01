@@ -3,6 +3,7 @@ import threading
 import time
 import json
 import pickle
+import os
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 s1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
@@ -10,6 +11,7 @@ s2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s3 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s5 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s6 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 sunucuCalısıyor = True
 print("Sunucu hatasız açıldı.")
@@ -21,6 +23,7 @@ port2 = 25567
 port3 = 25568
 portodasayisi = 12255
 portkullanicisayisi = 13255
+portupdate = 25569
 print("İp ve portlar belirlendi.")
 
 app = {}
@@ -34,12 +37,14 @@ s2.bind((ip,port2))
 s3.bind((ip,port3))
 s4.bind((ip, portodasayisi))
 s5.bind((ip, portkullanicisayisi))
+s6.bind((ip, portupdate))
 s.listen()
 s1.listen()
 s2.listen()
 s3.listen()
 s4.listen()
 s5.listen()
+s6.listen()
 print("Bağlantılar dinlemeye alındı.")
 
 
@@ -100,7 +105,7 @@ while sunucuCalısıyor:
     starter,address = s.accept()
     print("Bağlanan starter ile bağlantı kuruldu.")
     print(starter,address)
-    starter.send("1".encode("utf8"))
+    starter.send("2".encode("utf8"))
     print("Versiyon bilgisi gönderildi.")
     update= starter.recv(1024).decode("utf8")
     if not update:
@@ -168,9 +173,73 @@ while sunucuCalısıyor:
                         usernumberthread.start()
                 else:
                     print("Giriş bilgisi yanlış.")
-        elif update == "outofdate":
-            #update ile ilgili veri gönderilecek.
-            pass
+        if update == "outofdate":
+            updclient, address6 = s6.accept()
+            print("Updater bağlantısı kuruldu.")
+            bilgi = updclient.recv(1024).decode("utf8")
+            if bilgi == "0":
+                f = open("starter.py","rb")
+                size = os.path.getsize("starter.py")
+                updclient.send(str(size).encode("utf-8"))
+                print(size)
+
+                data = f.read(2048)
+                while True:
+                    updclient.sendall(data)
+                    data = f.read(2048)
+                    print("Starter ile ilgili veri gönderiliyor.")
+                    if not data:
+                        print("Çık")
+                        break
+                f.close()
+                print("Dosya bitti.")
+                bilgi = updclient.recv(1024).decode("utf8")
+                if bilgi == "1":
+                    print("Dosya tam olarak karşıya iletilmiş.")
+                    f.close()
+
+                    f = open("newuser.py", "rb")
+                    size = os.path.getsize("newuser.py")
+                    updclient.send(str(size).encode("utf-8"))
+                    print(size)
+
+                    data = f.read(2048)
+                    while True:
+                        updclient.sendall(data)
+                        data = f.read(2048)
+
+                        if not data:
+                            print("Çık")
+                            break
+                    f.close()
+                    bilgi = updclient.recv(1024).decode("utf8")
+                    if bilgi == "2":
+                        print("Dosya tam olarak karşıya iletilmiş - 2")
+
+
+                        f = open("msageana.py", "rb")
+                        size = os.path.getsize("msageana.py")
+                        updclient.send(str(size).encode("utf-8"))
+                        data = f.read(2048)
+
+                        while True:
+                            updclient.sendall(data)
+                            data = f.read(2048)
+                            if not data:
+                                print("Çık")
+                                break
+                        f.close()
+                        bilgi = updclient.recv(1024).decode("utf8")
+                        if bilgi == "3":
+                            print("Tüm dosyalar gönderildi.")
+                        else:
+                            print("Dosya gönderiminde bir hata oluştu.")
+                    else:
+                        print("Veri tam olarak karşıya iletilmemiş. - 2")
+                else:
+                    print("Veri tam olarak karşıya iletilmemiş.")
+            else:
+                pass
 
         else:
             print("Böyle bir client yok veya değiştirilmiş.")

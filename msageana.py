@@ -78,9 +78,19 @@ class Ui(QtWidgets.QMainWindow):
             #Eğer herhangi bir odada ise odadan çık komutu eklenecek.
 
             if menu.exec_(event.globalPos()):
-                print("Basıldı")
+                print(self.odalarlist.currentItem().text())
         
             return True
+        
+        if event.type() == QEvent.ContextMenu and source is self.kisilerlist:
+            menu = QMenu()
+            menu.addAction("Mesaj Gönder")
+
+            if menu.exec_(event.globalPos()):
+                print(self.kisilerlist.currentItem().text())
+        
+            return True
+
         return super().eventFilter(source, event)
 
     def mousePressEvent(self, event):
@@ -113,11 +123,6 @@ class Ui(QtWidgets.QMainWindow):
         print("Kapatma işlemi başlatıldı.")
         self.close()
         quit()
-
-    def photo(self):
-        pixmap = QPixmap('msagelogo.png')
-        pixmap_resized = pixmap.scaled(600, 1500, QtCore.Qt.KeepAspectRatio)
-        self.logo.setPixmap(pixmap_resized)
         
 
 
